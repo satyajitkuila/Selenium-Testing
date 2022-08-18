@@ -26,7 +26,7 @@ namespace SeleniumCsharpTraining.CSharpPrograms.Day1
             si = (p * r * t) / 100;
             amt = si + p;
 
-            Console.WriteLine($"The final amont to be paid to bank is {amt} for {t} years");
+            Console.WriteLine($"The final amount to be paid to bank is {amt} for {t} years");
         }
     }
 }
