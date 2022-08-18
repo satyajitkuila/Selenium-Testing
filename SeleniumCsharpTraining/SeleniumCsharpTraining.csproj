@@ -5,7 +5,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <StartupObject>SeleniumCsharpTraining.CSharpPrograms.Day2.VariableTypes</StartupObject>
+    <StartupObject>SeleniumCsharpTraining.CSharpPrograms.Day2.NumberDivisibility</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
