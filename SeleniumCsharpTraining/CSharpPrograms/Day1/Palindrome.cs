@@ -13,7 +13,7 @@ namespace SeleniumCsharpTraining.CSharpPrograms.Day1
             Console.WriteLine("Enter the Word:");
             String str = Console.ReadLine();
             int length = str.Length;
-            System.Console.WriteLine(length);
+            Console.WriteLine(length);
             String reverse = String.Empty;
             for (int i = length - 1; i >= 0; i--)
             {
