@@ -5,7 +5,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <StartupObject>SeleniumCsharpTraining.CSharpPrograms.Day3.Fibonacci</StartupObject>
+    <StartupObject>SeleniumCsharpTraining.CSharpPrograms.Day3.SalaryProcessing</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
