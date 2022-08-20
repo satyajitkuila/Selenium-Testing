@@ -17,12 +17,9 @@ namespace SeleniumCsharpTraining.CSharpPrograms.Day4
            //Q4.DEF432G,GTH987M,VCD923$
 
             RegularExpression rg =new RegularExpression();
-            String pattern = @"^[a-z]\d{3}[0-9]\d{3}[a-z]$";
-
-            bool val = rg.Equals(pattern);
-
+            String pattern = @"[a-zA-Z]+[0-9]\d+[a-zA-z]";
             
-            MatchCollection mt =Regex.Matches("DEF432G", pattern);
+            MatchCollection mt =Regex.Matches("DEF432G,GTH987M,VCD923$", pattern);
             Console.WriteLine("{0} matches", mt.Count);
 
         }
