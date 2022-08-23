@@ -1,14 +1,9 @@
-﻿using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 
-namespace SeleniumCsharpTraining.SeleniumPrograms.Day6
+namespace SeleniumCsharpTraining.SeleniumPrograms.Day7
 {
-    internal class ChangeProfile
+    internal class ChangeProfileValidation
     {
         static void Main(string[] args)
         {
@@ -23,24 +18,30 @@ namespace SeleniumCsharpTraining.SeleniumPrograms.Day6
             driver.FindElement(By.XPath("//span[contains(text(),'Sign In')]")).Click();
 
             //Change Profile
+            string val1 = "jackson";
+
             Thread.Sleep(2000);
             driver.FindElement(By.XPath("//a[normalize-space()='View or change my account information.']")).Click();
             driver.FindElement(By.XPath("//input[@name='lastname']")).Clear();
-            driver.FindElement(By.XPath("//input[@name='lastname']")).SendKeys("jackson");
+            driver.FindElement(By.XPath("//input[@name='lastname']")).SendKeys(val1);
             driver.FindElement(By.XPath("//span[contains(text(),'Continue')]")).Click();
 
+            //Change Profile Validation
+            if (driver.FindElement(By.XPath("//td[@class='messageStackSuccess']")) != null)
+            {
+                driver.FindElement(By.XPath("//a[normalize-space()='View or change my account information.']")).Click();
+                string val2 = driver.FindElement(By.XPath("//input[@name='lastname']")).GetAttribute("value");
 
+                if (val1 == val2)
+                {
+                    Console.WriteLine("Value is changed successfully in lastname field");
+                }
 
+            }
             //Logout
             driver.FindElement(By.XPath("//span[contains(text(),'Log Off')]")).Click();
             driver.FindElement(By.XPath("//span[contains(text(),'Continue')]")).Click();
             driver.Close();
-
-
-
-
-
         }
     }
 }
-

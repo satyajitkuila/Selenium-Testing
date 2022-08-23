@@ -10,9 +10,9 @@ namespace SeleniumCsharpTraining.CSharpPrograms.Day5
     {
         static void Main(string[] args)
         {
-            string[] names = new string[] { "JohnSnow", "Cersei", "Arya", "Jamie", "Tyrion" };
+            string[] names = new string[] { "sam1123@gmail.com,user123", "sam123@gmail.com,user123" };
 
-            using (StreamWriter sw = new StreamWriter("D:\\VS Studio Files\\ReadWriteFiles\\names.txt"))
+            using (StreamWriter sw = new StreamWriter("D:\\VS Studio Files\\ReadWriteFiles\\tdata.csv"))
             {
 
                 foreach (string s in names)
