@@ -5,7 +5,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <StartupObject>SeleniumCsharpTraining.SeleniumPrograms.Day8.MainOperationonPOM</StartupObject>
+    <StartupObject>SeleniumCsharpTraining.SeleniumPrograms.Day8.ExcelOperation</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,6 +14,11 @@
 
   <ItemGroup>
     <PackageReference Include="DotNetSeleniumExtras.PageObjects" Version="3.11.0" />
+    <PackageReference Include="log4net" Version="2.0.15" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.0" />
+    <PackageReference Include="Microsoft.Office.Interop.Excel" Version="15.0.4795.1001" />
+    <PackageReference Include="NUnit" Version="3.13.3" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
     <PackageReference Include="Selenium.Support" Version="4.4.0" />
     <PackageReference Include="Selenium.WebDriver" Version="4.4.0" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="104.0.5112.7900" />
