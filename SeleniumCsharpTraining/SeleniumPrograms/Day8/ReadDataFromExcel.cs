@@ -14,7 +14,7 @@ namespace SeleniumCsharpTraining.SeleniumPrograms.Day8
             //Create COM Objects. Create a COM object for everything that is referenced
             Excel.Application xlApp = new Excel.Application();
             Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(@"d:\\example.xlsx");
-            Excel.Worksheet xlWorksheet = xlWorkbook.Sheets[1];
+            Excel.Worksheet xlWorksheet = (Worksheet)xlWorkbook.Sheets[1];
             Excel.Range xlRange = xlWorksheet.UsedRange;
 
             int rowCount = xlRange.Rows.Count;
@@ -31,8 +31,8 @@ namespace SeleniumCsharpTraining.SeleniumPrograms.Day8
                         Console.Write("\r\n");
 
                     //write the value to the console
-                    if (xlRange.Cells[i, j] != null && xlRange.Cells[i, j].Value2 != null)
-                        Console.Write(xlRange.Cells[i, j].Value2.ToString() + "\t");
+                    if (xlRange.Cells[i, j] != null && xlRange.Cells[i, j] != null)
+                        Console.Write(xlRange.Cells[i, j].ToString() + "\t");
                 }
             }
 
