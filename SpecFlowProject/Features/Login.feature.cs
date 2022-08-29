@@ -75,10 +75,14 @@ namespace SpecFlowProject.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Successful Login with Valid Credentials")]
-        public virtual void SuccessfulLoginWithValidCredentials()
+        [NUnit.Framework.TestCaseAttribute("sam123@gmail.com", "user123", null)]
+        [NUnit.Framework.TestCaseAttribute("sam123@gmail.com", "user1123", null)]
+        public virtual void SuccessfulLoginWithValidCredentials(string userName, string password, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("UserName", userName);
+            argumentsOfScenario.Add("Password", password);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Successful Login with Valid Credentials", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 3
 this.ScenarioInitialize(scenarioInfo);
@@ -107,7 +111,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("Navigate to LogIn Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 6
- testRunner.When("User enter UserName and Password", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("User enter {0} and {1}", userName, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 7
  testRunner.And("Click on the LogIn button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -126,7 +130,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Successful Logout", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 10
+#line 14
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -146,10 +150,10 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 11
+#line 15
  testRunner.When("User LogOut from the Application", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 12
+#line 16
  testRunner.Then("Successful LogOut message should display", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

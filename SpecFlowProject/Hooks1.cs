@@ -1,15 +1,13 @@
 ﻿using AventStack.ExtentReports;
 using AventStack.ExtentReports.Gherkin.Model;
 using AventStack.ExtentReports.Reporter;
-using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 
 namespace SpecFlowProject
 {
     [Binding]
-    public sealed class Hooks:DriverHelper
+    public sealed class Hooks : DriverHelper
     {
         private static ExtentTest featureName;
         private static ExtentTest scenario;
@@ -20,12 +18,15 @@ namespace SpecFlowProject
         {
             //Page.Initialize();
             //string path1 = AppDomain.CurrentDomain.BaseDirectory.Replace("\\bin\\Debug", "");
-            string path = "D:\\VS Studio Files\\Selenium Testing\\Report\\index.html";
-            ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(path);
+
+
+            string path = @"D:\\VS Studio Files\\Selenium Testing\\Report\\index10.html";
+            var htmlReporter = new ExtentHtmlReporter(path);
             htmlReporter.Config.Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Dark;
-            extent = new ExtentReports();
+            extent = new AventStack.ExtentReports.ExtentReports();
             extent.AttachReporter(htmlReporter);
             Driver = new ChromeDriver();
+
         }
         [BeforeFeature]
         public static void BeforeFeature()
@@ -39,7 +40,7 @@ namespace SpecFlowProject
         {
             Console.WriteLine("BeforeScenario");
             scenario = featureName.CreateNode<Scenario>(ScenarioContext.Current.ScenarioInfo.Title);
-            
+
         }
         [AfterStep]
         public void InsertReportingSteps()
@@ -48,7 +49,12 @@ namespace SpecFlowProject
             if (ScenarioContext.Current.TestError == null)
             {
                 if (stepType == "Given")
+                {
                     scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text);
+                    string path = DriverHelper.TakeScreenshot();
+                    scenario.AddScreenCaptureFromPath(path);
+                    
+                }
                 else if (stepType == "When")
                     scenario.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text);
                 else if (stepType == "Then")
@@ -61,6 +67,10 @@ namespace SpecFlowProject
                 if (stepType == "Given")
                 {
                     scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text).Fail(ScenarioContext.Current.TestError.Message);
+                    //Call method will return a path as string.
+                   /* string path = DriverHelper.TakeScreenshot();
+                    scenario.AddScreenCaptureFromPath(path);*/
+
                 }
                 else if (stepType == "When")
                 {
@@ -86,8 +96,8 @@ namespace SpecFlowProject
         [AfterTestRun]
         public static void AfterTestRun()
         {
-           Driver.Close();
-           Driver.Dispose();
+            Driver.Close();
+            Driver.Dispose();
             //kill the browser
             //Flush report once test completes
             extent.Flush();

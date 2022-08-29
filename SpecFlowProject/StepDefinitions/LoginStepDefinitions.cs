@@ -1,49 +1,43 @@
-using AventStack.ExtentReports;
 using AventStack.ExtentReports.Gherkin.Model;
-using AventStack.ExtentReports.Reporter;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Remote;
-using OpenQA.Selenium.Support.UI;
 
 namespace SpecFlowProject.StepDefinitions
 {
     [Binding]
-    public class LoginStepDefinitions:DriverHelper
+    public class LoginStepDefinitions : DriverHelper
     {
-      
+
+
 
         [Given(@"User is at the Home Page")]
         public void GivenUserIsAtTheHomePage()
         {
-           // driver = new ChromeDriver();
+            // driver = new ChromeDriver();
             Driver.Url = "https://5elementslearning.dev/demosite/";
             Driver.Manage().Window.Maximize();
-            
+
         }
 
         [Given(@"Navigate to LogIn Page")]
         public void GivenNavigateToLogInPage()
         {
             Driver.FindElement(By.XPath("//span[contains(text(),'My Account')]")).Click();
-           
+
 
         }
-
-        [When(@"User enter UserName and Password")]
-        public void WhenUserEnterUserNameAndPassword()
+        [When(@"User enter (.*) and (.*)")]
+        public void WhenUserEnterUserNameAndPassword(string UserName,string Password)
         {
-            Driver.FindElement(By.Name("email_address")).SendKeys("sam123@gmail.com");
-            Driver.FindElement(By.Name("password")).SendKeys("user1123");
-      
+            Driver.FindElement(By.Name("email_address")).SendKeys(UserName);
+            Driver.FindElement(By.Name("password")).SendKeys(Password);
         }
 
         [When(@"Click on the LogIn button")]
         public void WhenClickOnTheLogInButton()
         {
             Driver.FindElement(By.XPath("//span[contains(text(),'Sign In')]")).Click();
-           
+
 
         }
 
@@ -59,7 +53,7 @@ namespace SpecFlowProject.StepDefinitions
         [When(@"User LogOut from the Application")]
         public void WhenUserLogOutFromTheApplication()
         {
-           Thread.Sleep(2000);  
+            Thread.Sleep(2000);
             Driver.FindElement(By.XPath("//span[contains(text(),'Log Off')]")).Click();
             Driver.FindElement(By.XPath("//span[contains(text(),'Continue')]")).Click();
 
