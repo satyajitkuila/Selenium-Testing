@@ -48,44 +48,64 @@ namespace SpecFlowProject
             var stepType = ScenarioStepContext.Current.StepInfo.StepDefinitionType.ToString();
             if (ScenarioContext.Current.TestError == null)
             {
+                
                 if (stepType == "Given")
                 {
                     scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text);
-                    string path = DriverHelper.TakeScreenshot();
-                    scenario.AddScreenCaptureFromPath(path);
-                    
+                   
                 }
                 else if (stepType == "When")
+                {
                     scenario.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text);
+                    
+                }
+
                 else if (stepType == "Then")
+                {
                     scenario.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text);
+                   
+                }
+                   
                 else if (stepType == "And")
+                {
                     scenario.CreateNode<And>(ScenarioStepContext.Current.StepInfo.Text);
+                   
+                }
+                   
             }
             else if (ScenarioContext.Current.TestError != null)
             {
+                string path = DriverHelper.TakeScreenshot();
                 if (stepType == "Given")
                 {
                     scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text).Fail(ScenarioContext.Current.TestError.Message);
                     //Call method will return a path as string.
-                   /* string path = DriverHelper.TakeScreenshot();
-                    scenario.AddScreenCaptureFromPath(path);*/
+                   // string path = DriverHelper.TakeScreenshot();
+                    scenario.AddScreenCaptureFromPath(path);
 
                 }
                 else if (stepType == "When")
                 {
                     scenario.CreateNode<When>(ScenarioStepContext.Current.StepInfo.Text).Fail(ScenarioContext.Current.TestError.Message);
+                    //string path = DriverHelper.TakeScreenshot();
+                    scenario.AddScreenCaptureFromPath(path);
                 }
                 else if (stepType == "Then")
                 {
                     scenario.CreateNode<Then>(ScenarioStepContext.Current.StepInfo.Text).Fail(ScenarioContext.Current.TestError.Message);
+                    scenario.AddScreenCaptureFromPath(path);
+                    
+
+
                 }
                 else if (stepType == "And")
                 {
                     scenario.CreateNode<And>(ScenarioStepContext.Current.StepInfo.Text).Fail(ScenarioContext.Current.TestError.Message);
+                    scenario.AddScreenCaptureFromPath(path);
                 }
             }
         }
+
         [AfterScenario]
         public void AfterScenario()
         {
