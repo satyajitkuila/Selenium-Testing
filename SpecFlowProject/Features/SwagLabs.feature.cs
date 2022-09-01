@@ -77,6 +77,8 @@ namespace SpecFlowProject.Features
         [NUnit.Framework.DescriptionAttribute("Successful Login with Valid Credentials on swag labs")]
         [NUnit.Framework.CategoryAttribute("tag1")]
         [NUnit.Framework.TestCaseAttribute("standard_user", "secret_sauce", null)]
+        [NUnit.Framework.TestCaseAttribute("standard_use2", "secret_sauce", null)]
+        [NUnit.Framework.TestCaseAttribute("locked_out_user", "secret_sauce", null)]
         public void SuccessfulLoginWithValidCredentialsOnSwagLabs(string testusername, string testPassword, string[] exampleTags)
         {
             string[] @__tags = new string[] {

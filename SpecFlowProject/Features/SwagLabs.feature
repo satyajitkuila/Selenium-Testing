@@ -13,3 +13,6 @@ Scenario: Successful Login with Valid Credentials on swag labs
 Examples: 
 | testusername    | testPassword |
 | standard_user   | secret_sauce |
+| standard_use2   | secret_sauce |
+| locked_out_user | secret_sauce |
+

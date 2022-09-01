@@ -1,21 +1,19 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
-using System;
-using TechTalk.SpecFlow;
 
 namespace SpecFlowProject.StepDefinitions
 {
     [Binding]
-    public class SwagLabsStepDefinitions:DriverHelper
+    public class SwagLabsStepDefinitions : DriverHelper
     {
 
-        
+
 
 
         [Given(@"User is at the swag labs Page")]
         public void GivenUserIsAtTheSwagLabsPage()
         {
-            
+
             Driver.Url = "https://www.saucedemo.com/";
             Driver.Manage().Window.Maximize();
         }
@@ -23,8 +21,20 @@ namespace SpecFlowProject.StepDefinitions
         [When(@"User enters the (.*) and (.*)")]
         public void WhenUserEntersTheTestusernameAndSecret_Sauce(string testusername, string testPassword)
         {
-            Driver.FindElement(By.XPath("//input[@id='user-name']")).SendKeys(testusername);
-            Driver.FindElement(By.XPath("//input[@id='password']")).SendKeys(testPassword);
+            IWebElement user = Driver.FindElement(By.XPath("//input[@id='user-name']"));
+            if (user.Displayed == true)
+            {
+                user.SendKeys(testusername);
+                Driver.FindElement(By.XPath("//input[@id='password']")).SendKeys(testPassword);
+
+            }
+            else
+            {
+                Driver.FindElement(By.XPath("//button[@id='react-burger-menu-btn']")).Click();
+                Thread.Sleep(2000);
+                Driver.FindElement(By.XPath("//a[@id='logout_sidebar_link']")).Click();
+            }
+
         }
 
 
@@ -39,11 +49,18 @@ namespace SpecFlowProject.StepDefinitions
         [Then(@"Successful LogIN is there")]
         public void ThenSuccessfulLogINIsThere()
         {
-
-            // Assert.IsTrue(ele.Text.Contains("Products"));
-            string htmlpage = Driver.PageSource;
-            Console.WriteLine(htmlpage);
-            Assert.IsTrue(Driver.FindElement(By.XPath("//span[@class='title']")).Text.Contains(htmlpage));
+            try
+            {
+                IWebElement prodlink = Driver.FindElement(By.XPath("//div[normalize-space()='Sauce Labs Backpack']"));
+                prodlink.Displayed.Should().BeTrue();
+                Console.WriteLine("Login Succeessfull");
+            }
+            catch (Exception ex)
+            {
+                IWebElement errormsg = Driver.FindElement(By.XPath("//h3[@data-test='error']"));
+                string erm = errormsg.Text;
+                Assert.IsTrue(false, erm);
+            }
 
         }
 
@@ -51,6 +68,7 @@ namespace SpecFlowProject.StepDefinitions
         public void WhenUserLogsOutFromTheApplication()
         {
             Driver.FindElement(By.XPath("//button[@id='react-burger-menu-btn']")).Click();
+            Thread.Sleep(2000);
             Driver.FindElement(By.XPath("//a[@id='logout_sidebar_link']")).Click();
         }
 
@@ -58,7 +76,7 @@ namespace SpecFlowProject.StepDefinitions
         public void ThenSuccessfulLogoutPage()
         {
             IWebElement logout = Driver.FindElement(By.XPath("//div[@class='login_logo']"));
-            Assert.IsTrue(logout.Text.Contains("login_logo"));
+            logout.Displayed.Should().BeTrue();
         }
     }
 }

@@ -78,10 +78,12 @@ namespace SpecFlowProject
                 string path = DriverHelper.TakeScreenshot();
                 if (stepType == "Given")
                 {
+
                     scenario.CreateNode<Given>(ScenarioStepContext.Current.StepInfo.Text).Fail(ScenarioContext.Current.TestError.Message);
                     //Call method will return a path as string.
-                   // string path = DriverHelper.TakeScreenshot();
+                    // string path = DriverHelper.TakeScreenshot();
                     scenario.AddScreenCaptureFromPath(path);
+                    
 
                 }
                 else if (stepType == "When")
