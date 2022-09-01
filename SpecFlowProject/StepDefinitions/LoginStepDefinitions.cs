@@ -1,6 +1,7 @@
 using AventStack.ExtentReports.Gherkin.Model;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using SpecFlowProject.Support;
 using TechTalk.SpecFlow;
 
 namespace SpecFlowProject.StepDefinitions
