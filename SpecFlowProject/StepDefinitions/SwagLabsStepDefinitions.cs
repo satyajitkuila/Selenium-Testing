@@ -23,6 +23,7 @@ namespace SpecFlowProject.StepDefinitions
         public void WhenUserEntersTheTestusernameAndSecret_Sauce(string testusername, string testPassword)
         {
             IWebElement user = Driver.FindElement(By.XPath("//input[@id='user-name']"));
+            
             if (user.Displayed == true)
             {
                 user.SendKeys(testusername);

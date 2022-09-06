@@ -40,7 +40,7 @@ namespace SpecFlowProject.StepDefinitions
         public void WhenZohoUserIsNavigatedToTheHomePage()
         {
             String title = Driver.Title;
-            Assert.AreEqual( "Zoho Accounts1",title, "User not on Home Page");
+            Assert.AreEqual( "Zoho Accounts",title, "User not on Home Page");
 
         }
 

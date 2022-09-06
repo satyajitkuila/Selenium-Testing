@@ -21,7 +21,7 @@ namespace SpecFlowProject.Support
 
 
             string path = @"D:\\VS Studio Files\\Selenium Testing\\Report\\index10.html";
-            var htmlReporter = new ExtentHtmlReporter(path);
+            ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(path);
             htmlReporter.Config.Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Dark;
             extent = new ExtentReports();
             extent.AttachReporter(htmlReporter);
