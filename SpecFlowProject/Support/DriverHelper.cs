@@ -12,8 +12,16 @@ namespace SpecFlowProject.Support
         public static IWebDriver Driver { get; set; }
         public static string GetRandomString()
         {
-            string path = Path.GetRandomFileName();
+            /*string path = Path.GetRandomFileName();
             path = path.Replace(".", ""); // Remove period.
+            return path;*/
+            DateTime dt = DateTime.Now;
+            string str2 = dt.ToString("yyyy-dd-M--HH-mm-ss");
+            string str3=str2.Replace(" ", "-").Replace(":", "-");
+            string str1 = "File-"+str3;
+            string path = str1;
+           
+            Console.WriteLine(path);
             return path;
         }
         public static string TakeScreenshot()
