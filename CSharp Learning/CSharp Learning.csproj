@@ -6,7 +6,7 @@
     <RootNamespace>CSharp_Learning</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <StartupObject>CSharp_Learning.Examples.ReadDataFromExcel</StartupObject>
+    <StartupObject>CSharp_Learning.Examples.LinkedList</StartupObject>
 	  <TargetFramework>net6.0-windows</TargetFramework>
 	  <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>

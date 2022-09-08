@@ -12,6 +12,7 @@ namespace CSharp_Learning.Examples
 {
     internal class ReadDataFromExcel
     {
+        public Microsoft.Office.Interop.Excel.Range Cells { get; }
         public static void Main(string[] args)
         {
 
@@ -31,6 +32,7 @@ namespace CSharp_Learning.Examples
                 for(int col =1; col <= colCount; col++)
                 {
                     var data=ws.Cells[row, col];
+                    
                     string dat=data.GetType().ToString();
                     
                     Console.WriteLine(dat);
